@@ -1,44 +1,38 @@
 function initPage() {
+    // Get the current hour of the day
     const currentHour = parseInt(moment().format("kk"));
+    // Update the page with the current date
     const currentDayEl = document.getElementById("currentDay");
     currentDayEl.innerHTML = moment().format("dddd, MMMM Do YYYY");
 
+    // Initialize a new array of note objects if none exists in local storage
     const emptyPlan = [
         {
-            "time": 9,
-            "note": ""
+            "time": 9, "note": ""
         },
         {
-            "time": 10,
-            "note": ""
+            "time": 10, "note": ""
         },
         {
-            "time": 11,
-            "note": ""
+            "time": 11, "note": ""
         },
         {
-            "time": 12,
-            "note": ""
+            "time": 12, "note": ""
         },
         {
-            "time": 13,
-            "note": ""
+            "time": 13, "note": ""
         },
         {
-            "time": 14,
-            "note": ""
+            "time": 14, "note": ""
         },
         {
-            "time": 15,
-            "note": ""
+            "time": 15, "note": ""
         },
         {
-            "time": 16,
-            "note": ""
+            "time": 16, "note": ""
         },
         {
-            "time": 17,
-            "note": ""
+            "time": 17, "note": ""
         }
     ];
 
@@ -46,6 +40,7 @@ function initPage() {
     const timeblockContainer = document.getElementById("timeblock-container");
     timeblockContainer.innerHTML = "";
 
+    // Dynamically generate the HTML for all time blocks
     for (let i=0; i<dayPlan.length; i++) {
         let hourString;
         const hour = 9 + i;
@@ -71,6 +66,7 @@ function initPage() {
 
         const noteEl = document.createElement("input");
         noteEl.setAttribute("type", "text");
+        // Compare the time block with the current time to decide what style it should have
         if (hour < currentHour) {
             noteEl.setAttribute("class", "form-control description past");
         } else if (hour === currentHour) {
@@ -99,5 +95,4 @@ function initPage() {
         saveSpan.append(saveIcon);
     }
 }
-
 initPage();
